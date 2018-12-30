@@ -1,0 +1,50 @@
+{
+  "name": "aphrodite-to-jss",
+  "version": "0.0.0",
+  "description": "Aphrodite compatible API using JSS as a backend",
+  "main": "dist/index.js",
+  "repository": "https://github.com/SamyPesse/aphrodite-to-jss",
+  "author": "Samy Pessé <samypesse@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "hyphenate-style-name": "^1.0.2",
+    "inline-style-prefixer": "^5.0.3",
+    "jss": "^10.0.0-alpha.3",
+    "string-hash": "^1.1.3"
+  },
+  "devDependencies": {
+    "@types/inline-style-prefixer": "^5.0.0",
+    "@types/jest": "^23.3.10",
+    "@types/jss": "^9.5.7",
+    "@types/string-hash": "^1.1.1",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "prepare": "tsc",
+    "test": "jest",
+    "lint": "tslint ./src/**/*.ts"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
