@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+- Fix weird error of fallbacks for prefix only added once
+- Fix merging of fallbacks (ex: mergin style `display: flex` and `display: grid`)
+
 ## 1.1.0
 
 - Fix output of prefixed property with fallback (ex: `display: flex`)
