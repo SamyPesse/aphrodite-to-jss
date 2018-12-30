@@ -34,6 +34,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue'
     },
 
+    blink: {
+        animationName: {
+            from: { opacity: 0 },
+            to: { opacity: 1 }
+        },
+        animationDuration: '3s, 1200ms',
+        animationIterationCount: 'infinite'
+    },
+
     hover: {
         ':hover': {
             backgroundColor: 'red'
@@ -61,6 +70,9 @@ class App extends Component {
             </span>
             <span className={css(styles.red, styles.blue)}>
                 This is blue.
+            </span>
+            <span className={css(styles.blue, styles.blink)}>
+                This is blue and blink
             </span>
             <span className={css(styles.blue, styles.small)}>
                 This is blue and turns red when the browser is less than
