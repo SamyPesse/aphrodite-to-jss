@@ -35,7 +35,10 @@ function css(...args: SheetDefinitions): string {
  */
 function flattenRules(rules: SheetDefinitions): SheetDefinition[] {
   return rules.reduce(
-    (result: SheetDefinition[], rule: SheetDefinition | SheetDefinitions) => {
+    (
+      result: SheetDefinition[],
+      rule: SheetDefinition | SheetDefinitions | null | undefined | false
+    ) => {
       if (!rule) {
         return result;
       }

@@ -1,4 +1,4 @@
-# `aphrodite-to-jss`
+# aphrodite-to-jss
 
 This module is an Aphrodite compatible API on top of JSS. This module is designed to easily switch a large code base from Aphrodite to JSS.
 
@@ -121,12 +121,12 @@ function render() {
 
 # API
 
-### `StyleSheet.create(styles: StyleDefinitions):  { [key: string]: SheetDefinition }`
+#### `StyleSheet.create(styles: StyleDefinitions):  { [key: string]: SheetDefinition }`
 
 Create function doesn't render anything, it just registers your styles.  
 Returns an object, where key names correspond the original styles object.
 
-### `StyleSheet.attach(): void`
+#### `StyleSheet.attach(): void`
 
 This method should be called in the browse, it attach the `<style>` element from JSS to the DOM.
 
@@ -134,15 +134,15 @@ When doing SSR, it should be called after the first rendering (after removing th
 
 When not doing SSR, it can be called when importing `aphrodite-to-jss`.
 
-### `StyleSheet.toCSSString(): string`
+#### `StyleSheet.toCSSString(): string`
 
 For SSR, it returns the CSS string that have be injected.
 
-### `StyleSheet.reset(): string`
+#### `StyleSheet.reset(): string`
 
 Reset the injected styles.
 
-### `css(...styles: SheetDefinitions): string`
+#### `css(...styles: SheetDefinitions): string`
 
 Injects a previously defined rule to the dom. This is done in sync, so the CSS rule is immediately available.
 
