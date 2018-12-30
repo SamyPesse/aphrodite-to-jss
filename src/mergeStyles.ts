@@ -1,3 +1,4 @@
+import cssShorthandProps = require('css-shorthand-properties');
 import { StyleDefinition } from './types';
 import { isObject } from './utils';
 
@@ -9,9 +10,11 @@ function mergeStyles(a: StyleDefinition, b: StyleDefinition): StyleDefinition {
 
   // When merging "margin: 0px" with "margin-right: 0px", the second should be removed
   Object.keys(b).forEach(key => {
-    Object.keys(result).forEach(aKey => {
-      if (isSubProperty(aKey, key)) {
-        delete result[aKey];
+    const shorthands = cssShorthandProps.expand(key);
+
+    shorthands.forEach(shorthand => {
+      if (shorthand !== key) {
+        delete result[shorthand];
       }
     });
   });
@@ -58,24 +61,6 @@ function mergeFallbacks(
 
     return otherIndex === index;
   });
-}
-
-/*
- * Test if a property is a sub-property of another.
- * ex: isSubProperty('margin-right', 'margin') === true
- */
-function isSubProperty(subProperty: string, property: string): boolean {
-  if (subProperty.indexOf(`${property}-`) === 0) {
-    return true;
-  }
-
-  if (subProperty.indexOf(property) !== 0) {
-    return false;
-  }
-
-  // Handle the camel case
-  const charAfter = subProperty[property.length];
-  return Boolean(charAfter && charAfter === charAfter.toUpperCase());
 }
 
 export default mergeStyles;

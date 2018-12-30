@@ -91,7 +91,9 @@ render(document.body, <App />, () => {
 
 # Compatibilities
 
-With Aphrodite:
+`aphrodite-to-jss` takes the best of both worlds:
+
+From Aphrodite:
 
 - ✅ **Pseudo-elements**: `{ ':hover': { color: 'red' } }`
 - ✅ **Animation keyframes**: `{ animation: { from: { opacity: 0 }, to: { opacity: 1} } }`
@@ -99,11 +101,12 @@ With Aphrodite:
 - ✅ **Array fallback**: `{ display: ['-webkit-flex', 'flex'] }`
 - ❌ **Font-face**: not currently implemented, but could be (PR welcomed !)
 
-With JSS:
+From JSS:
 
 - ✅ **JSS pseudo-elements**: `{ '&:hover': { color: 'red' } }`
 - ✅ **JSS nested**: `{ '& .button': { color: 'red' } }`
 - ✅ **JSS global styles**: `{ '@global': { html: { color: 'black' } } }`
+- ✅ **Sorted properties**: `{ margin: 2, marginRight: 4 }`
 
 # Server-side rendering (SSR)
 

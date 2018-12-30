@@ -23,7 +23,7 @@ it('should merge the pseudo elements', () => {
   });
 });
 
-it('should merge the sub-property', () => {
+it('should merge the shorthands', () => {
   expect(
     mergeStyles(
       {
@@ -38,18 +38,19 @@ it('should merge the sub-property', () => {
   });
 });
 
-it('should merge the sub-property (camel-case)', () => {
+it('should not merge non-shorthand', () => {
   expect(
     mergeStyles(
       {
-        marginRight: 5
+        'border-radius': 5
       },
       {
-        margin: 3
+        border: '1px solid'
       }
     )
   ).toEqual({
-    margin: 3
+    'border-radius': 5,
+    border: '1px solid'
   });
 });
 

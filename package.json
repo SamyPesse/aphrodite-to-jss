@@ -7,6 +7,7 @@
   "author": "Samy Pessé <samypesse@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "css-shorthand-properties": "^1.1.1",
     "hyphenate-style-name": "^1.0.2",
     "inline-style-prefixer": "^5.0.3",
     "jss": "^10.0.0-alpha.3",
