@@ -6,10 +6,6 @@ node_js:
   - stable
   - 8.14.0
 
-jobs:
-  include:
-    # Unit Tests
-    - stage: unit tests & lint 🐿
-      script: yarn test
-    # Lint
-    - script: yarn lint
+script:
+  - yarn lint
+  - yarn test
