@@ -143,16 +143,48 @@ describe('normalizeStyles', () => {
         }
       })
     ).toEqual({
-      html: {
-        display: [
-          '-webkit-box',
-          '-moz-box',
-          '-ms-flexbox',
-          '-webkit-flex',
-          'flex'
-        ],
-        '-webkit-box-align': 'center',
-        'align-items': 'center'
+      styles: {
+        html: {
+          display: [
+            '-webkit-box',
+            '-moz-box',
+            '-ms-flexbox',
+            '-webkit-flex',
+            'flex'
+          ],
+          '-webkit-box-align': 'center',
+          'align-items': 'center'
+        }
+      },
+      globals: {}
+    });
+  });
+
+  it('should normalize animation', () => {
+    expect(
+      normalizeStyles({
+        html: {
+          animation: {
+            from: { opacity: 0 },
+            to: { opacity: 1 }
+          }
+        }
+      })
+    ).toEqual({
+      styles: {
+        html: {
+          animation: '$animation-1936999747'
+        }
+      },
+      globals: {
+        '@keyframes animation-1936999747': {
+          from: {
+            opacity: 0
+          },
+          to: {
+            opacity: 1
+          }
+        }
       }
     });
   });

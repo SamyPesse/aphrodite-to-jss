@@ -113,4 +113,32 @@ describe('StyleSheet.toCSSString()', () => {
 
 `);
   });
+
+  it('should support animations in global', () => {
+    StyleSheet.create({
+      '@global': {
+        html: {
+          animation: {
+            from: { opacity: 0 },
+            to: { opacity: 1 }
+          }
+        }
+      }
+    });
+
+    const cssText = StyleSheet.toCSSString();
+    expect(cssText).toEqual(`@keyframes keyframes-animation-1936999747-0-1-1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+html {
+  animation: keyframes-animation-1936999747-0-1-1;
+}
+
+`);
+  });
 });

@@ -57,17 +57,20 @@ function normalizeStyle(
 /*
  * Normalize multiple global styles.
  */
-function normalizeStyles(input: StyleDefinitions): StyleDefinitions {
-  const result: StyleDefinitions = {};
+function normalizeStyles(
+  input: StyleDefinitions
+): { styles: StyleDefinition; globals: StyleDefinitions } {
+  const styles: StyleDefinitions = {};
+  const globals: StyleDefinitions = {};
 
   Object.keys(input).forEach(key => {
-    const { style, globals } = normalizeStyle(input[key]);
+    const result = normalizeStyle(input[key]);
 
-    result[key] = style;
-    Object.assign(result, globals);
+    styles[key] = result.style;
+    Object.assign(globals, result.globals);
   });
 
-  return result;
+  return { styles, globals };
 }
 
 /*

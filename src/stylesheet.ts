@@ -40,8 +40,7 @@ function createStyleSheet(
           throw new Error('"@global" should be an object');
         }
 
-        const styles = normalizeStyles(globalStyle);
-        StyleSheet.globalSheet.addRule('@global', styles);
+        createGlobalStyleSheet(globalStyle);
 
         return map;
       }
@@ -60,6 +59,22 @@ function createStyleSheet(
   );
 }
 
+/*
+ * Create and inject some global styles.
+ */
+function createGlobalStyleSheet(input: StyleDefinitions) {
+  const { styles, globals } = normalizeStyles(input);
+
+  Object.keys(globals).forEach(key => {
+    StyleSheet.globalSheet.addRule(key, globals[key]);
+  });
+
+  StyleSheet.globalSheet.addRule('@global', styles);
+}
+
+/*
+ * Generate a local class name.
+ */
 function generateClassName(name: string, style: any): string {
   return `${name}-${hash(style)}`;
 }
