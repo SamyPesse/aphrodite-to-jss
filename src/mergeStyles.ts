@@ -20,9 +20,12 @@ function mergeStyles(a: StyleDefinition, b: StyleDefinition): StyleDefinition {
     const bStyle = b[key];
 
     // Media-queries, pseudo-elements
-    if (isObject(bStyle)) {
+    if (isObject(bStyle) && !Array.isArray(bStyle)) {
       const aStyle = result[key];
-      result[key] = mergeStyles(isObject(aStyle) ? aStyle : {}, bStyle);
+      result[key] = mergeStyles(
+        isObject(aStyle) && !Array.isArray(aStyle) ? aStyle : {},
+        bStyle
+      );
     } else {
       result[key] = bStyle;
     }
