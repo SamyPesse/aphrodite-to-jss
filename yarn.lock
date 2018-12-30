@@ -1987,6 +1987,31 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jss-plugin-default-unit@10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-default-unit/-/jss-plugin-default-unit-10.0.0-alpha.3.tgz#bf29bec9edf8a95a8b9ddb77eb181bfa9e446a4b"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-global@10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-global/-/jss-plugin-global-10.0.0-alpha.3.tgz#199f194f187c8de978c960306460f0e21c6e63bb"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+jss-plugin-nested@10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-nested/-/jss-plugin-nested-10.0.0-alpha.3.tgz#15122a55a36aca8cd69d7ae3161f5b2b28a5df23"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    warning "^3.0.0"
+
+jss-plugin-props-sort@10.0.0-alpha.3:
+  version "10.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/jss-plugin-props-sort/-/jss-plugin-props-sort-10.0.0-alpha.3.tgz#a71ef39f077385e6624d0ac4d2dac1e36ccedf8f"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 jss@^10.0.0-alpha.3:
   version "10.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.0.0-alpha.3.tgz#e7c9d8f45337f2278e2879bb1c6ac5fd16a63c08"

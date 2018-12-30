@@ -1,7 +1,7 @@
 {
   "name": "aphrodite-to-jss",
   "version": "0.0.0",
-  "description": "Aphrodite compatible API using JSS as a backend",
+  "description": "Aphrodite compatible API on top of JSS.",
   "main": "dist/index.js",
   "repository": "https://github.com/SamyPesse/aphrodite-to-jss",
   "author": "Samy Pessé <samypesse@gmail.com>",
@@ -10,6 +10,10 @@
     "hyphenate-style-name": "^1.0.2",
     "inline-style-prefixer": "^5.0.3",
     "jss": "^10.0.0-alpha.3",
+    "jss-plugin-default-unit": "10.0.0-alpha.3",
+    "jss-plugin-global": "10.0.0-alpha.3",
+    "jss-plugin-nested": "10.0.0-alpha.3",
+    "jss-plugin-props-sort": "10.0.0-alpha.3",
     "string-hash": "^1.1.3"
   },
   "devDependencies": {

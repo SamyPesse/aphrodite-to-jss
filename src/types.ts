@@ -14,4 +14,6 @@ export interface SheetDefinition {
 export type SheetDefinitions = SheetDefinitionArray;
 
 interface SheetDefinitionArray
-  extends Array<SheetDefinitions | SheetDefinition> {}
+  extends Array<
+    SheetDefinitions | SheetDefinition | null | undefined | false
+  > {}

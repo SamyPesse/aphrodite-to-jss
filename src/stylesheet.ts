@@ -1,10 +1,22 @@
 import { create, StyleSheet } from 'jss';
+import pluginDefaultUnit from 'jss-plugin-default-unit';
+import pluginGlobal from 'jss-plugin-global';
+import pluginNested from 'jss-plugin-nested';
+import pluginPropsSort from 'jss-plugin-props-sort';
+
 import { SheetDefinition, StyleDefinitions } from './types';
 
 import normalizeStyle from './normalizeStyle';
 import { hash } from './utils';
 
-const jss = create();
+const jss = create({
+  plugins: [
+    pluginGlobal(),
+    pluginNested(),
+    pluginDefaultUnit({}),
+    pluginPropsSort()
+  ]
+});
 
 const StyleSheet = {
   toCSSString,
