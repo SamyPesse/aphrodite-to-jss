@@ -1,5 +1,12 @@
 export interface StyleDefinition {
-  [property: string]: string | number | StyleDefinition;
+  fallback?: StyleDefinition[];
+  [property: string]:
+    | string
+    | null
+    | undefined
+    | number
+    | StyleDefinition
+    | StyleDefinition[];
 }
 
 export interface StyleDefinitions {

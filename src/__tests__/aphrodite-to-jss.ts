@@ -105,7 +105,11 @@ describe('StyleSheet.toCSSString()', () => {
 
     const cssText = StyleSheet.toCSSString();
     expect(cssText).toEqual(`html {
-  display: -webkit-box, -moz-box, -ms-flexbox, -webkit-flex, flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   box-sizing: border-box;
   align-items: center;
   -webkit-box-align: center;

@@ -96,6 +96,7 @@ With Aphrodite:
 - ✅ **Pseudo-elements**: `{ ':hover': { color: 'red' } }`
 - ✅ **Animation keyframes**: `{ animation: { from: { opacity: 0 }, to: { opacity: 1} } }`
 - ✅ **SSR autoprefixing**: properties are auto-prefixed during server and browser rendering
+- ✅ **Array fallback**: `{ display: ['-webkit-flex', 'flex'] }`
 - ❌ **Font-face**: not currently implemented, but could be (PR welcomed !)
 
 With JSS:

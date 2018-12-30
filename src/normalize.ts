@@ -17,7 +17,9 @@ function normalizeStyle(
     const value = input[key];
 
     if (
+      !value ||
       typeof value !== 'object' ||
+      Array.isArray(value) ||
       (!isPseudoElementKey(key) && !isMediaQueryKey(key))
     ) {
       return;
@@ -82,7 +84,7 @@ function normalizeKeyFrame(keyFrame: StyleDefinition): StyleDefinition {
   Object.keys(keyFrame).forEach(key => {
     const value = keyFrame[key];
 
-    if (typeof value !== 'object' || !value) {
+    if (typeof value !== 'object' || !value || Array.isArray(value)) {
       throw new Error('KeyFrame should only contains a map of keys to styles');
     }
 
@@ -107,7 +109,22 @@ function normalizePlainStyle(input: StyleDefinition): StyleDefinition {
       return;
     }
 
-    result[hyphenate(key)] = value;
+    const resultKey = hyphenate(key);
+
+    if (Array.isArray(value)) {
+      result[resultKey] = value.pop();
+
+      const propertyFallbacks = value.map(fallbackValue => ({
+        [resultKey]: fallbackValue
+      }));
+
+      result.fallbacks = (Array.isArray(result.fallbacks)
+        ? result.fallbacks
+        : []
+      ).concat(propertyFallbacks);
+    } else {
+      result[resultKey] = value;
+    }
   });
 
   return result;

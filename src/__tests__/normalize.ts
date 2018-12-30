@@ -12,6 +12,25 @@ describe('Prefixing', () => {
     });
   });
 
+  it('should handle prefixed fallback', () => {
+    expect(
+      normalizeStyle({
+        display: 'flex'
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        display: 'flex',
+        fallbacks: [
+          { display: '-webkit-box' },
+          { display: '-moz-box' },
+          { display: '-ms-flexbox' },
+          { display: '-webkit-flex' }
+        ]
+      }
+    });
+  });
+
   it('should prefix properties', () => {
     expect(
       normalizeStyle({
@@ -143,20 +162,19 @@ describe('normalizeStyles', () => {
         }
       })
     ).toEqual({
+      globals: {},
       styles: {
         html: {
-          display: [
-            '-webkit-box',
-            '-moz-box',
-            '-ms-flexbox',
-            '-webkit-flex',
-            'flex'
-          ],
           '-webkit-box-align': 'center',
-          'align-items': 'center'
+          'align-items': 'center',
+          display: '-webkit-flex',
+          fallbacks: [
+            { display: '-webkit-box' },
+            { display: '-moz-box' },
+            { display: '-ms-flexbox' }
+          ]
         }
-      },
-      globals: {}
+      }
     });
   });
 
