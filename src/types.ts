@@ -9,7 +9,7 @@ export interface StyleDefinitions {
 export interface SheetDefinition {
   className: string;
   style: StyleDefinition;
-  extras: StyleDefinitions;
+  globals: StyleDefinitions;
 }
 export type SheetDefinitions = SheetDefinitionArray;
 

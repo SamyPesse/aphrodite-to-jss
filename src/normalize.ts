@@ -9,9 +9,9 @@ import { hash, isObject } from './utils';
  */
 function normalizeStyle(
   input: StyleDefinition
-): { style: StyleDefinition; extras: StyleDefinitions } {
+): { style: StyleDefinition; globals: StyleDefinitions } {
   const style: StyleDefinition = normalizePlainStyle(input);
-  const extras: StyleDefinitions = {};
+  const globals: StyleDefinitions = {};
 
   Object.keys(input).forEach(key => {
     const value = input[key];
@@ -30,7 +30,7 @@ function normalizeStyle(
     const result = normalizeStyle(value);
 
     style[newKey] = result.style;
-    Object.assign(extras, result.extras);
+    Object.assign(globals, result.globals);
   });
 
   const animation = style.animation || style['animation-name'];
@@ -41,7 +41,7 @@ function normalizeStyle(
 
     const keyFrameNames = keyFrames.map(keyFrame => {
       const animationName = `animation-${hash(keyFrame)}`;
-      extras[`@keyframes ${animationName}`] = normalizeKeyFrame(keyFrame);
+      globals[`@keyframes ${animationName}`] = normalizeKeyFrame(keyFrame);
 
       return `$${animationName}`;
     });
@@ -51,7 +51,23 @@ function normalizeStyle(
     ] = keyFrameNames.join(', ');
   }
 
-  return { style, extras };
+  return { style, globals };
+}
+
+/*
+ * Normalize multiple global styles.
+ */
+function normalizeStyles(input: StyleDefinitions): StyleDefinitions {
+  const result: StyleDefinitions = {};
+
+  Object.keys(input).forEach(key => {
+    const { style, globals } = normalizeStyle(input[key]);
+
+    result[key] = style;
+    Object.assign(result, globals);
+  });
+
+  return result;
 }
 
 /*
@@ -115,4 +131,4 @@ function normalizePseudoElementKey(key: string): string {
   return key[0] !== '&' ? `&${key}` : key;
 }
 
-export default normalizeStyle;
+export { normalizeStyle, normalizeStyles };

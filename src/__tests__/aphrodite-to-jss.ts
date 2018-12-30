@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
 });
 
 afterEach(() => {
-  StyleSheet.reset();
+  // Also reset the globals for testing
+  StyleSheet.reset(true);
 });
 
 describe('css()', () => {
@@ -89,5 +90,27 @@ describe('StyleSheet.toCSSString()', () => {
 .button-2371347447 {
   color: red;
 }`);
+  });
+
+  it('should return normalized global style', () => {
+    StyleSheet.create({
+      '@global': {
+        html: {
+          display: 'flex',
+          boxSizing: 'border-box',
+          alignItems: 'center'
+        }
+      }
+    });
+
+    const cssText = StyleSheet.toCSSString();
+    expect(cssText).toEqual(`html {
+  display: -webkit-box, -moz-box, -ms-flexbox, -webkit-flex, flex;
+  box-sizing: border-box;
+  align-items: center;
+  -webkit-box-align: center;
+}
+
+`);
   });
 });

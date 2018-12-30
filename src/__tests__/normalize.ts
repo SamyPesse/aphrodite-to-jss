@@ -1,4 +1,4 @@
-import normalizeStyle from '../normalizeStyle';
+import { normalizeStyle, normalizeStyles } from '../normalize';
 
 describe('Prefixing', () => {
   it('should uncamelcase propetties', () => {
@@ -7,7 +7,7 @@ describe('Prefixing', () => {
         marginRight: 4
       })
     ).toEqual({
-      extras: {},
+      globals: {},
       style: { 'margin-right': 4 }
     });
   });
@@ -18,7 +18,7 @@ describe('Prefixing', () => {
         alignItems: 'center'
       })
     ).toEqual({
-      extras: {},
+      globals: {},
       style: { '-webkit-box-align': 'center', 'align-items': 'center' }
     });
   });
@@ -31,7 +31,7 @@ describe('Prefixing', () => {
         }
       })
     ).toEqual({
-      extras: {},
+      globals: {},
       style: {
         '&:hover': { '-webkit-box-align': 'center', 'align-items': 'center' }
       }
@@ -51,7 +51,7 @@ describe('Prefixing', () => {
         }
       })
     ).toEqual({
-      extras: {
+      globals: {
         '@keyframes animation-717956034': {
           from: { '-webkit-box-align': 'center', 'align-items': 'center' },
           to: { '-webkit-box-align': 'left', 'align-items': 'left' }
@@ -72,7 +72,7 @@ describe('Pseudo-elements', () => {
         }
       })
     ).toEqual({
-      extras: {},
+      globals: {},
       style: {
         '&:before': {
           color: 'black',
@@ -91,7 +91,7 @@ describe('Pseudo-elements', () => {
         }
       })
     ).toEqual({
-      extras: {},
+      globals: {},
       style: {
         '&:before': {
           color: 'black',
@@ -116,7 +116,7 @@ describe('Animations', () => {
         }
       })
     ).toEqual({
-      extras: {
+      globals: {
         '@keyframes animation-1936999747': {
           from: {
             opacity: 0
@@ -128,6 +128,31 @@ describe('Animations', () => {
       },
       style: {
         'animation-name': '$animation-1936999747'
+      }
+    });
+  });
+});
+
+describe('normalizeStyles', () => {
+  it('should return all of the style normalized', () => {
+    expect(
+      normalizeStyles({
+        html: {
+          display: 'flex',
+          alignItems: 'center'
+        }
+      })
+    ).toEqual({
+      html: {
+        display: [
+          '-webkit-box',
+          '-moz-box',
+          '-ms-flexbox',
+          '-webkit-flex',
+          'flex'
+        ],
+        '-webkit-box-align': 'center',
+        'align-items': 'center'
       }
     });
   });

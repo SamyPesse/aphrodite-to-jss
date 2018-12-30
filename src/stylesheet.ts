@@ -6,8 +6,8 @@ import pluginPropsSort from 'jss-plugin-props-sort';
 
 import { SheetDefinition, StyleDefinitions } from './types';
 
-import normalizeStyle from './normalizeStyle';
-import { hash } from './utils';
+import { normalizeStyle, normalizeStyles } from './normalize';
+import { hash, isObject } from './utils';
 
 const jss = create({
   plugins: [
@@ -32,21 +32,26 @@ function createStyleSheet(
 ): { [key: string]: SheetDefinition } {
   return Object.keys(input).reduce(
     (map: { [key: string]: SheetDefinition }, name: string) => {
-      const { style, extras } = normalizeStyle(input[name]);
-
       if (name === '@global') {
-        StyleSheet.globalSheet.addRule(name, style);
+        // @ts-ignore
+        const globalStyle: StyleDefinitions = input[name];
 
-        Object.keys(extras).forEach(extraKey => {
-          StyleSheet.globalSheet.addRule(extraKey, extras[extraKey]);
-        });
+        if (!isObject(globalStyle)) {
+          throw new Error('"@global" should be an object');
+        }
+
+        const styles = normalizeStyles(globalStyle);
+        StyleSheet.globalSheet.addRule('@global', styles);
+
+        return map;
       }
 
+      const { style, globals } = normalizeStyle(input[name]);
       const className = generateClassName(name, style);
 
       map[name] = {
         className,
-        extras,
+        globals,
         style
       };
       return map;
@@ -91,9 +96,14 @@ function attachStyleSheet() {
 /*
  * For SSR: Reset everything.
  */
-function resetStyleSheet() {
+function resetStyleSheet(globals: boolean = false) {
   jss.removeStyleSheet(StyleSheet.sheet);
   StyleSheet.sheet = createSheet();
+
+  if (globals) {
+    jss.removeStyleSheet(StyleSheet.globalSheet);
+    StyleSheet.globalSheet = createSheet();
+  }
 }
 
 export default StyleSheet;

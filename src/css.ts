@@ -19,8 +19,8 @@ function css(...args: SheetDefinitions): string {
   );
 
   rules.forEach(rule => {
-    Object.keys(rule.extras).forEach(extraKey => {
-      StyleSheet.sheet.addRule(extraKey, rule.extras[extraKey]);
+    Object.keys(rule.globals).forEach(extraKey => {
+      StyleSheet.sheet.addRule(extraKey, rule.globals[extraKey]);
     });
   });
 
