@@ -150,6 +150,45 @@ describe('Animations', () => {
       }
     });
   });
+
+  it('should normalize animations as array', () => {
+    expect(
+      normalizeStyle({
+        animationName: [
+          {
+            from: {
+              opacity: 0
+            },
+            to: {
+              opacity: 1
+            }
+          },
+          {
+            from: {
+              color: 'red'
+            },
+            to: {
+              opacity: 'blue'
+            }
+          }
+        ]
+      })
+    ).toEqual({
+      globals: {
+        '@keyframes animation-1385969259': {
+          from: { color: 'red' },
+          to: { opacity: 'blue' }
+        },
+        '@keyframes animation-1936999747': {
+          from: { opacity: 0 },
+          to: { opacity: 1 }
+        }
+      },
+      style: {
+        'animation-name': '$animation-1936999747, $animation-1385969259'
+      }
+    });
+  });
 });
 
 describe('normalizeStyles', () => {
@@ -167,11 +206,12 @@ describe('normalizeStyles', () => {
         html: {
           '-webkit-box-align': 'center',
           'align-items': 'center',
-          display: '-webkit-flex',
+          display: 'flex',
           fallbacks: [
             { display: '-webkit-box' },
             { display: '-moz-box' },
-            { display: '-ms-flexbox' }
+            { display: '-ms-flexbox' },
+            { display: '-webkit-flex' }
           ]
         }
       }

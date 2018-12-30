@@ -111,10 +111,11 @@ function normalizePlainStyle(input: StyleDefinition): StyleDefinition {
 
     const resultKey = hyphenate(key);
 
-    if (Array.isArray(value)) {
-      result[resultKey] = value.pop();
-
-      const propertyFallbacks = value.map(fallbackValue => ({
+    if (Array.isArray(value) && !isAnimationKeyFrameKey(resultKey)) {
+      // inline-style-prefixer returns an array for fallbacks
+      // but it returns always the same reference (we shouldn't mutate it)
+      result[resultKey] = value[value.length - 1];
+      const propertyFallbacks = value.slice(0, -1).map(fallbackValue => ({
         [resultKey]: fallbackValue
       }));
 
@@ -142,6 +143,13 @@ function isPseudoElementKey(key: string): boolean {
  */
 function isMediaQueryKey(key: string): boolean {
   return key[0] === '@';
+}
+
+/*
+ * Test if a key is an animation keyframe
+ */
+function isAnimationKeyFrameKey(key: string): boolean {
+  return key === 'animation' || key === 'animation-name';
 }
 
 /*
