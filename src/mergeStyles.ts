@@ -21,10 +21,8 @@ function mergeStyles(a: StyleDefinition, b: StyleDefinition): StyleDefinition {
 
     // Media-queries, pseudo-elements
     if (isObject(bStyle)) {
-      result[key] = mergeStyles(
-        isObject(result[key]) ? result[key] : {},
-        bStyle
-      );
+      const aStyle = result[key];
+      result[key] = mergeStyles(isObject(aStyle) ? aStyle : {}, bStyle);
     } else {
       result[key] = bStyle;
     }
