@@ -1,11 +1,10 @@
-import stringHash = require('string-hash');
-import deterministicStringify = require('json-stringify-deterministic');
+import hashSum = require('hash-sum');
 
 /*
  * Return a fast hash of an input object.
  */
 function hash(input: any): string {
-  return stringHash(deterministicStringify(input)).toString();
+  return hashSum(input)
 }
 
 /*

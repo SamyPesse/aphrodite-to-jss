@@ -71,12 +71,12 @@ describe('Prefixing', () => {
       })
     ).toEqual({
       globals: {
-        '@keyframes animation-2685528514': {
+        '@keyframes animation-4901b894': {
           from: { '-webkit-box-align': 'center', 'align-items': 'center' },
           to: { '-webkit-box-align': 'left', 'align-items': 'left' }
         }
       },
-      style: { 'animation-name': '$animation-2685528514' }
+      style: { 'animation-name': '$animation-4901b894' }
     });
   });
 });
@@ -136,7 +136,7 @@ describe('Animations', () => {
       })
     ).toEqual({
       globals: {
-        '@keyframes animation-1936999747': {
+        '@keyframes animation-398cee40': {
           from: {
             opacity: 0
           },
@@ -146,7 +146,7 @@ describe('Animations', () => {
         }
       },
       style: {
-        'animation-name': '$animation-1936999747'
+        'animation-name': '$animation-398cee40'
       }
     });
   });
@@ -175,17 +175,17 @@ describe('Animations', () => {
       })
     ).toEqual({
       globals: {
-        '@keyframes animation-1385969259': {
+        '@keyframes animation-0ff05eb8': {
           from: { color: 'red' },
           to: { opacity: 'blue' }
         },
-        '@keyframes animation-1936999747': {
+        '@keyframes animation-398cee40': {
           from: { opacity: 0 },
           to: { opacity: 1 }
         }
       },
       style: {
-        'animation-name': '$animation-1936999747, $animation-1385969259'
+        'animation-name': '$animation-398cee40, $animation-0ff05eb8'
       }
     });
   });
@@ -231,11 +231,11 @@ describe('normalizeStyles', () => {
     ).toEqual({
       styles: {
         html: {
-          animation: '$animation-1936999747'
+          animation: '$animation-398cee40'
         }
       },
       globals: {
-        '@keyframes animation-1936999747': {
+        '@keyframes animation-398cee40': {
           from: {
             opacity: 0
           },

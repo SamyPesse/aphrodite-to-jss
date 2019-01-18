@@ -8,21 +8,20 @@
   "license": "MIT",
   "dependencies": {
     "css-shorthand-properties": "^1.1.1",
+    "hash-sum": "^1.0.2",
     "hyphenate-style-name": "^1.0.2",
     "inline-style-prefixer": "^5.0.3",
-    "json-stringify-deterministic": "^1.0.1",
     "jss": "^10.0.0-alpha.3",
     "jss-plugin-default-unit": "10.0.0-alpha.3",
     "jss-plugin-global": "10.0.0-alpha.3",
     "jss-plugin-nested": "10.0.0-alpha.3",
-    "jss-plugin-props-sort": "10.0.0-alpha.3",
-    "string-hash": "^1.1.3"
+    "jss-plugin-props-sort": "10.0.0-alpha.3"
   },
   "devDependencies": {
+    "@types/hash-sum": "^1.0.0",
     "@types/inline-style-prefixer": "^5.0.0",
     "@types/jest": "^23.3.10",
     "@types/jss": "^9.5.7",
-    "@types/string-hash": "^1.1.1",
     "jest": "^23.6.0",
     "prettier": "^1.15.3",
     "ts-jest": "^23.10.5",
