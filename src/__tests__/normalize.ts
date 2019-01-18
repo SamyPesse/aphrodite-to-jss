@@ -71,12 +71,12 @@ describe('Prefixing', () => {
       })
     ).toEqual({
       globals: {
-        '@keyframes animation-717956034': {
+        '@keyframes animation-2685528514': {
           from: { '-webkit-box-align': 'center', 'align-items': 'center' },
           to: { '-webkit-box-align': 'left', 'align-items': 'left' }
         }
       },
-      style: { 'animation-name': '$animation-717956034' }
+      style: { 'animation-name': '$animation-2685528514' }
     });
   });
 });
