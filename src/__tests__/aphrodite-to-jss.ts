@@ -19,27 +19,27 @@ afterEach(() => {
 describe('css()', () => {
   it('should return a className', () => {
     const className = css(styles.button);
-    expect(className).toEqual('button-2371347447');
+    expect(className).toEqual('button-f55bd29c');
   });
 
   it('should ignore falsy value', () => {
     const className = css(styles.button, false, null, undefined);
-    expect(className).toEqual('button-2371347447');
+    expect(className).toEqual('button-f55bd29c');
   });
 
   it('should combine styles as arguments', () => {
     const className = css(styles.button, styles.buttonGreen);
-    expect(className).toEqual('button-2371347447--buttonGreen-2088673977');
+    expect(className).toEqual('button-f55bd29c--buttonGreen-96d03856');
   });
 
   it('should combine styles as array', () => {
     const className = css([styles.button, styles.buttonGreen]);
-    expect(className).toEqual('button-2371347447--buttonGreen-2088673977');
+    expect(className).toEqual('button-f55bd29c--buttonGreen-96d03856');
   });
 
   it('should combine styles as nested array', () => {
     const className = css([[styles.button], [styles.buttonGreen]]);
-    expect(className).toEqual('button-2371347447--buttonGreen-2088673977');
+    expect(className).toEqual('button-f55bd29c--buttonGreen-96d03856');
   });
 });
 
@@ -51,7 +51,7 @@ describe('StyleSheet.toCSSString()', () => {
     const cssText = StyleSheet.toCSSString();
     expect(cssText).toEqual(`
 
-.button-2371347447 {
+.button-f55bd29c {
   color: red;
 }`);
   });
@@ -63,10 +63,10 @@ describe('StyleSheet.toCSSString()', () => {
     const cssText = StyleSheet.toCSSString();
     expect(cssText).toEqual(`
 
-.button-2371347447--buttonGreen-2088673977 {
+.button-f55bd29c--buttonGreen-96d03856 {
   color: red;
 }
-.button-2371347447--buttonGreen-2088673977:hover {
+.button-f55bd29c--buttonGreen-96d03856:hover {
   color: green;
 }`);
   });
@@ -87,7 +87,7 @@ describe('StyleSheet.toCSSString()', () => {
   color: red;
 }
 
-.button-2371347447 {
+.button-f55bd29c {
   color: red;
 }`);
   });
@@ -131,7 +131,7 @@ describe('StyleSheet.toCSSString()', () => {
     });
 
     const cssText = StyleSheet.toCSSString();
-    expect(cssText).toEqual(`@keyframes keyframes-animation-1936999747-0-1-1 {
+    expect(cssText).toEqual(`@keyframes keyframes-animation-398cee40-0-1-1 {
   from {
     opacity: 0;
   }
@@ -140,7 +140,7 @@ describe('StyleSheet.toCSSString()', () => {
   }
 }
 html {
-  animation: keyframes-animation-1936999747-0-1-1;
+  animation: keyframes-animation-398cee40-0-1-1;
 }
 
 `);

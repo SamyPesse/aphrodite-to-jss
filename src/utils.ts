@@ -1,10 +1,10 @@
-import stringHash = require('string-hash');
+import hashSum = require('hash-sum');
 
 /*
  * Return a fast hash of an input object.
  */
 function hash(input: any): string {
-  return stringHash(JSON.stringify(input)).toString();
+  return hashSum(input)
 }
 
 /*
