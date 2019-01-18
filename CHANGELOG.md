@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3
+
+- Fix classNames not being deterministic 
+
 ## 1.1.2
 
 - Fix false-positive with merge of shorthand properties (ex: `border-radius` and `border`)
