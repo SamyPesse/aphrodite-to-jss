@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.4
+
+- Fix `fallbacks` being lost and not correctly merged
+
 ## 1.1.3
 
 - Fix classNames not being deterministic 
