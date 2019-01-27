@@ -1,5 +1,5 @@
 export interface StyleDefinition {
-  fallback?: StyleDefinition[];
+  fallbacks?: StyleDefinition[];
   [property: string]:
     | string
     | null

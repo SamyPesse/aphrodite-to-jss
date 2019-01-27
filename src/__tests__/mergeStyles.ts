@@ -77,21 +77,21 @@ it('should merge the media query', () => {
   });
 });
 
-it('should merge fallbacks', () => {
+it('should merge conflicting fallbacks', () => {
   expect(
     mergeStyles(
       {
         display: 'flex',
-        fallback: [{ display: '-webkit-box' }]
+        fallbacks: [{ display: '-webkit-box' }]
       },
       {
         display: 'grid',
-        fallback: [{ display: '-webkit-grid' }]
+        fallbacks: [{ display: '-webkit-grid' }]
       }
     )
   ).toEqual({
     display: 'grid',
-    fallback: [{ display: '-webkit-grid' }]
+    fallbacks: [{ display: '-webkit-grid' }]
   });
 });
 
@@ -101,16 +101,16 @@ it('should merge different fallbacks', () => {
       {
         display: 'flex',
         background: 'linear-gradient(to right, red 0%, green 100%)',
-        fallback: [{ display: '-webkit-box' }, { background: 'red' }]
+        fallbacks: [{ display: '-webkit-box' }, { background: 'red' }]
       },
       {
         display: 'grid',
-        fallback: [{ display: '-webkit-grid' }]
+        fallbacks: [{ display: '-webkit-grid' }]
       }
     )
   ).toEqual({
     display: 'grid',
     background: 'linear-gradient(to right, red 0%, green 100%)',
-    fallback: [{ display: '-webkit-grid' }, { background: 'red' }]
+    fallbacks: [{ display: '-webkit-grid' }, { background: 'red' }]
   });
 });

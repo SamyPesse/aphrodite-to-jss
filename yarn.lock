@@ -1995,39 +1995,43 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jss-plugin-default-unit@10.0.0-alpha.3:
-  version "10.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/jss-plugin-default-unit/-/jss-plugin-default-unit-10.0.0-alpha.3.tgz#bf29bec9edf8a95a8b9ddb77eb181bfa9e446a4b"
+jss-plugin-default-unit@10.0.0-alpha.9:
+  version "10.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/jss-plugin-default-unit/-/jss-plugin-default-unit-10.0.0-alpha.9.tgz#75912aee7deca75e22f8737f093d6da40f586138"
   dependencies:
     "@babel/runtime" "^7.0.0"
+    jss "10.0.0-alpha.9"
 
-jss-plugin-global@10.0.0-alpha.3:
-  version "10.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/jss-plugin-global/-/jss-plugin-global-10.0.0-alpha.3.tgz#199f194f187c8de978c960306460f0e21c6e63bb"
+jss-plugin-global@10.0.0-alpha.9:
+  version "10.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/jss-plugin-global/-/jss-plugin-global-10.0.0-alpha.9.tgz#04d087463c04ad4bae93930a260c0f768751806e"
   dependencies:
     "@babel/runtime" "^7.0.0"
+    jss "10.0.0-alpha.9"
 
-jss-plugin-nested@10.0.0-alpha.3:
-  version "10.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/jss-plugin-nested/-/jss-plugin-nested-10.0.0-alpha.3.tgz#15122a55a36aca8cd69d7ae3161f5b2b28a5df23"
+jss-plugin-nested@10.0.0-alpha.9:
+  version "10.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/jss-plugin-nested/-/jss-plugin-nested-10.0.0-alpha.9.tgz#b4d28ca7269527e2adf98987b0946720d3e9a959"
   dependencies:
     "@babel/runtime" "^7.0.0"
-    warning "^3.0.0"
+    jss "10.0.0-alpha.9"
+    tiny-warning "^1.0.2"
 
-jss-plugin-props-sort@10.0.0-alpha.3:
-  version "10.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/jss-plugin-props-sort/-/jss-plugin-props-sort-10.0.0-alpha.3.tgz#a71ef39f077385e6624d0ac4d2dac1e36ccedf8f"
+jss-plugin-props-sort@10.0.0-alpha.9:
+  version "10.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/jss-plugin-props-sort/-/jss-plugin-props-sort-10.0.0-alpha.9.tgz#3e92b5f2f48a26b6c8873cf2d6f0ce7c6848ff10"
   dependencies:
     "@babel/runtime" "^7.0.0"
+    jss "10.0.0-alpha.9"
 
-jss@^10.0.0-alpha.3:
-  version "10.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/jss/-/jss-10.0.0-alpha.3.tgz#e7c9d8f45337f2278e2879bb1c6ac5fd16a63c08"
+jss@10.0.0-alpha.9, jss@^10.0.0-alpha.9:
+  version "10.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-10.0.0-alpha.9.tgz#c4a0334010a019a167d72107f23bcd9e266ccbab"
   dependencies:
     "@babel/runtime" "^7.0.0"
     is-in-browser "^1.1.3"
     symbol-observable "^1.2.0"
-    warning "^3.0.0"
+    tiny-warning "^1.0.2"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -3198,6 +3202,10 @@ tiny-emitter@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
 
+tiny-warning@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.2.tgz#1dfae771ee1a04396bdfde27a3adcebc6b648b28"
+
 tmpl@1.0.x:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
@@ -3403,12 +3411,6 @@ walker@~1.0.5:
   resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"
   dependencies:
     makeerror "1.0.x"
-
-warning@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
-  dependencies:
-    loose-envify "^1.0.0"
 
 watch@~0.18.0:
   version "0.18.0"

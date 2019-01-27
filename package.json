@@ -11,11 +11,11 @@
     "hash-sum": "^1.0.2",
     "hyphenate-style-name": "^1.0.2",
     "inline-style-prefixer": "^5.0.3",
-    "jss": "^10.0.0-alpha.3",
-    "jss-plugin-default-unit": "10.0.0-alpha.3",
-    "jss-plugin-global": "10.0.0-alpha.3",
-    "jss-plugin-nested": "10.0.0-alpha.3",
-    "jss-plugin-props-sort": "10.0.0-alpha.3"
+    "jss": "^10.0.0-alpha.9",
+    "jss-plugin-default-unit": "10.0.0-alpha.9",
+    "jss-plugin-global": "10.0.0-alpha.9",
+    "jss-plugin-nested": "10.0.0-alpha.9",
+    "jss-plugin-props-sort": "10.0.0-alpha.9"
   },
   "devDependencies": {
     "@types/hash-sum": "^1.0.0",

@@ -118,6 +118,59 @@ describe('StyleSheet.toCSSString()', () => {
 `);
   });
 
+  it('should return all the fallbacks', () => {
+    const fallbacksStyles = StyleSheet.create({
+      a: {
+        overflow: 'overlay',
+        fallbacks: [{ overflow: 'auto' }]
+      },
+      b: {
+        overflowY: 'overlay',
+        fallbacks: [{ overflowY: 'auto' }]
+      }
+    });
+
+    css(fallbacksStyles.a, fallbacksStyles.b);
+
+    const cssText = StyleSheet.toCSSString();
+    expect(cssText).toEqual(`
+
+.a-4ae8808c--b-436018aa {
+  overflowY: auto;
+  overflow: auto;
+  overflow: overlay;
+  overflow-y: overlay;
+}`);
+  });
+
+  it('should return all the fallbacks (also prefixed ones)', () => {
+    const fallbacksStyles = StyleSheet.create({
+      a: {
+        overflow: 'overlay',
+        display: 'flex',
+        fallbacks: [{ overflow: 'auto' }]
+      },
+      b: {
+        overflowY: 'overlay',
+        fallbacks: [{ overflowY: 'auto' }]
+      }
+    });
+
+    css(fallbacksStyles.a, fallbacksStyles.b);
+
+    const cssText = StyleSheet.toCSSString();
+    expect(cssText).toEqual(`
+
+.a-08216426--b-436018aa {
+  overflowY: auto;
+  display: -webkit-box;
+  overflow: auto;
+  display: flex;
+  overflow: overlay;
+  overflow-y: overlay;
+}`);
+  });
+
   it('should support animations in global', () => {
     StyleSheet.create({
       '@global': {

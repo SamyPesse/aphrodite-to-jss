@@ -1,4 +1,4 @@
-import { create, StyleSheet } from 'jss';
+import { create, StyleSheet as JSSStyleSheet } from 'jss';
 import pluginDefaultUnit from 'jss-plugin-default-unit';
 import pluginGlobal from 'jss-plugin-global';
 import pluginNested from 'jss-plugin-nested';
@@ -82,7 +82,7 @@ function generateClassName(name: string, style: any): string {
 /*
  * Create the JSS stylesheet.
  */
-function createSheet(): StyleSheet {
+function createSheet(): JSSStyleSheet {
   return jss.createStyleSheet(
     {},
     {

@@ -31,6 +31,45 @@ describe('Prefixing', () => {
     });
   });
 
+  it('should not lost existing fallbacks', () => {
+    expect(
+      normalizeStyle({
+        overflow: 'overlay',
+        fallbacks: [{ overflow: 'auto' }]
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        overflow: 'overlay',
+        fallbacks: [{ overflow: 'auto' }]
+      }
+    });
+  });
+
+  it('should not lost existing fallbacks (object)', () => {
+    expect(
+      normalizeStyle({
+        overflow: 'overlay',
+        display: 'flex',
+        // @ts-ignore: in that case we want to test user who do not follow the right syntax
+        fallbacks: { overflow: 'auto' }
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        overflow: 'overlay',
+        display: 'flex',
+        fallbacks: [
+          { display: '-webkit-box' },
+          { display: '-moz-box' },
+          { display: '-ms-flexbox' },
+          { display: '-webkit-flex' },
+          { overflow: 'auto' }
+        ]
+      }
+    });
+  });
+
   it('should prefix properties', () => {
     expect(
       normalizeStyle({

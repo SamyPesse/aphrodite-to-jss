@@ -23,7 +23,7 @@ function mergeStyles(a: StyleDefinition, b: StyleDefinition): StyleDefinition {
     const bStyle = b[key];
     const aStyle = result[key];
 
-    if (key === 'fallback' && Array.isArray(bStyle)) {
+    if (key === 'fallbacks' && Array.isArray(bStyle)) {
       result[key] = Array.isArray(aStyle)
         ? mergeFallbacks(aStyle, bStyle)
         : bStyle;

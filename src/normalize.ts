@@ -102,10 +102,20 @@ function normalizePlainStyle(input: StyleDefinition): StyleDefinition {
   const result: StyleDefinition = {};
   const prefixed = prefix(input);
 
+  // Normalize the fallback to always be an array
+  if (prefixed.fallbacks && !Array.isArray(prefixed.fallbacks)) {
+    prefixed.fallbacks = [prefixed.fallbacks];
+  }
+
   Object.keys(prefixed).forEach(key => {
     const value = prefixed[key];
 
     if (isPseudoElementKey(key) || isMediaQueryKey(key)) {
+      return;
+    }
+
+    if (key === 'fallbacks' && Array.isArray(value)) {
+      result.fallbacks = (result.fallbacks || []).concat(value);
       return;
     }
 
@@ -119,10 +129,7 @@ function normalizePlainStyle(input: StyleDefinition): StyleDefinition {
         [resultKey]: fallbackValue
       }));
 
-      result.fallbacks = (Array.isArray(result.fallbacks)
-        ? result.fallbacks
-        : []
-      ).concat(propertyFallbacks);
+      result.fallbacks = (result.fallbacks || []).concat(propertyFallbacks);
     } else {
       result[resultKey] = value;
     }
