@@ -135,8 +135,8 @@ describe('StyleSheet.toCSSString()', () => {
     const cssText = StyleSheet.toCSSString();
     expect(cssText).toEqual(`
 
-.a-4ae8808c--b-436018aa {
-  overflowY: auto;
+.a-4ae8808c--b-7680295e {
+  overflow-y: auto;
   overflow: auto;
   overflow: overlay;
   overflow-y: overlay;
@@ -161,8 +161,8 @@ describe('StyleSheet.toCSSString()', () => {
     const cssText = StyleSheet.toCSSString();
     expect(cssText).toEqual(`
 
-.a-08216426--b-436018aa {
-  overflowY: auto;
+.a-08216426--b-7680295e {
+  overflow-y: auto;
   display: -webkit-box;
   overflow: auto;
   display: flex;

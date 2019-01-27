@@ -12,64 +12,6 @@ describe('Prefixing', () => {
     });
   });
 
-  it('should handle prefixed fallback', () => {
-    expect(
-      normalizeStyle({
-        display: 'flex'
-      })
-    ).toEqual({
-      globals: {},
-      style: {
-        display: 'flex',
-        fallbacks: [
-          { display: '-webkit-box' },
-          { display: '-moz-box' },
-          { display: '-ms-flexbox' },
-          { display: '-webkit-flex' }
-        ]
-      }
-    });
-  });
-
-  it('should not lost existing fallbacks', () => {
-    expect(
-      normalizeStyle({
-        overflow: 'overlay',
-        fallbacks: [{ overflow: 'auto' }]
-      })
-    ).toEqual({
-      globals: {},
-      style: {
-        overflow: 'overlay',
-        fallbacks: [{ overflow: 'auto' }]
-      }
-    });
-  });
-
-  it('should not lost existing fallbacks (object)', () => {
-    expect(
-      normalizeStyle({
-        overflow: 'overlay',
-        display: 'flex',
-        // @ts-ignore: in that case we want to test user who do not follow the right syntax
-        fallbacks: { overflow: 'auto' }
-      })
-    ).toEqual({
-      globals: {},
-      style: {
-        overflow: 'overlay',
-        display: 'flex',
-        fallbacks: [
-          { display: '-webkit-box' },
-          { display: '-moz-box' },
-          { display: '-ms-flexbox' },
-          { display: '-webkit-flex' },
-          { overflow: 'auto' }
-        ]
-      }
-    });
-  });
-
   it('should prefix properties', () => {
     expect(
       normalizeStyle({
@@ -282,6 +224,81 @@ describe('normalizeStyles', () => {
             opacity: 1
           }
         }
+      }
+    });
+  });
+});
+
+describe('Fallbacks', () => {
+  it('should normalize key in fallbacks', () => {
+    expect(
+      normalizeStyle({
+        overflowY: 'overlay',
+        fallbacks: [{ overflowY: 'auto' }]
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        'overflow-y': 'overlay',
+        fallbacks: [{ 'overflow-y': 'auto' }]
+      }
+    });
+  });
+
+  it('should handle prefixed fallback', () => {
+    expect(
+      normalizeStyle({
+        display: 'flex'
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        display: 'flex',
+        fallbacks: [
+          { display: '-webkit-box' },
+          { display: '-moz-box' },
+          { display: '-ms-flexbox' },
+          { display: '-webkit-flex' }
+        ]
+      }
+    });
+  });
+
+  it('should not lost existing fallbacks', () => {
+    expect(
+      normalizeStyle({
+        overflow: 'overlay',
+        fallbacks: [{ overflow: 'auto' }]
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        overflow: 'overlay',
+        fallbacks: [{ overflow: 'auto' }]
+      }
+    });
+  });
+
+  it('should not lost existing fallbacks (object)', () => {
+    expect(
+      normalizeStyle({
+        overflow: 'overlay',
+        display: 'flex',
+        // @ts-ignore: in that case we want to test user who do not follow the right syntax
+        fallbacks: { overflow: 'auto' }
+      })
+    ).toEqual({
+      globals: {},
+      style: {
+        overflow: 'overlay',
+        display: 'flex',
+        fallbacks: [
+          { display: '-webkit-box' },
+          { display: '-moz-box' },
+          { display: '-ms-flexbox' },
+          { display: '-webkit-flex' },
+          { overflow: 'auto' }
+        ]
       }
     });
   });

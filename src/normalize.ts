@@ -103,8 +103,18 @@ function normalizePlainStyle(input: StyleDefinition): StyleDefinition {
   const prefixed = prefix(input);
 
   // Normalize the fallback to always be an array
-  if (prefixed.fallbacks && !Array.isArray(prefixed.fallbacks)) {
-    prefixed.fallbacks = [prefixed.fallbacks];
+  if (prefixed.fallbacks) {
+    prefixed.fallbacks = Array.isArray(prefixed.fallbacks)
+      ? prefixed.fallbacks
+      : [prefixed.fallbacks];
+    prefixed.fallbacks = prefixed.fallbacks.map(fallback => {
+      const fallbackResult = normalizePlainStyle(fallback);
+
+      // We don't support recursive fallbacks
+      delete fallbackResult.fallbacks;
+
+      return fallbackResult;
+    });
   }
 
   Object.keys(prefixed).forEach(key => {
