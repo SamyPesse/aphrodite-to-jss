@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5
+
+- Normalize properties in `fallbacks` (for example `overflowY` to `overflow-y`)
+
 ## 1.1.4
 
 - Fix `fallbacks` being lost and not correctly merged
