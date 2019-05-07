@@ -1,5 +1,11 @@
 # Changelog
 
+# Changelog
+
+## 1.1.6
+
+- Improve performance of `css` calls
+
 ## 1.1.5
 
 - Normalize properties in `fallbacks` (for example `overflowY` to `overflow-y`)
