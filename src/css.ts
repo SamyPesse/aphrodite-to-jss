@@ -34,23 +34,26 @@ function css(...args: SheetDefinitions): string {
  * Flatten a nested SheetDefinitions into a list of SheetDefinition.
  */
 function flattenRules(rules: SheetDefinitions): SheetDefinition[] {
-  return rules.reduce(
-    (
-      result: SheetDefinition[],
-      rule: SheetDefinition | SheetDefinitions | null | undefined | false
-    ) => {
-      if (!rule) {
-        return result;
-      }
+  const result: SheetDefinition[] = [];
+  _flattenRules(rules, result);
+  return result;
+}
 
-      if (rule instanceof Array) {
-        return result.concat(flattenRules(rule));
-      }
-
-      return result.concat([rule]);
-    },
-    []
-  );
+/*
+ * _flattenRules adds all the valid rules into the provided accumulator
+ * in an optimized fashion (avoiding unecessary allocations)
+ */
+function _flattenRules(rules: SheetDefinitions, accu: SheetDefinition[]) {
+  for (const idx in rules) {
+    const rule = rules[idx];
+    if (!rule) {
+      continue;
+    } else if (rule instanceof Array) {
+      _flattenRules(rule, accu);
+    } else {
+      accu.push(rule);
+    }
+  }
 }
 
 export default css;
