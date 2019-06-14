@@ -1,8 +1,8 @@
-import hyphenate = require('hyphenate-style-name');
+import hyphenate from 'hyphenate-style-name';
 import { prefix } from 'inline-style-prefixer';
 
 import { StyleDefinition, StyleDefinitions } from './types';
-import { hash, isObject } from './utils';
+import { hash } from './utils';
 
 /*
  * Normalize styles in aphrodite syntax to the JSS syntax.

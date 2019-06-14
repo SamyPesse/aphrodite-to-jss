@@ -9,7 +9,7 @@
   "dependencies": {
     "css-shorthand-properties": "^1.1.1",
     "hash-sum": "^1.0.2",
-    "hyphenate-style-name": "^1.0.2",
+    "hyphenate-style-name": "1.0.3",
     "inline-style-prefixer": "^5.0.3",
     "jss": "^10.0.0-alpha.17",
     "jss-plugin-default-unit": "^10.0.0-alpha.17",
