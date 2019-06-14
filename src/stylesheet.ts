@@ -88,7 +88,7 @@ function createSheet(): JSSStyleSheet {
     {
       meta: 'aphrodite-to-jss'
     }
-  );
+  ) as JSSStyleSheet;
 }
 
 /*
