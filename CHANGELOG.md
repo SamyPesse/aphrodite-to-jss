@@ -2,6 +2,10 @@
 
 # Changelog
 
+## 1.1.7
+
+- Update JSS dependencies
+
 ## 1.1.6
 
 - Improve performance of `css` calls
